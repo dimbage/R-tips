@@ -130,8 +130,8 @@ ggcorrplot3 <-
         breaks = c(sig.lvl, 0, 1),
         labels = c(rev(sig_codes), ""),
         include.lowest = T)
-      ) %>%
-      mutate(Blank = Coef * Signif)    
+      ) #%>%
+   #   mutate(Blank = Coef * Signif)    
     
     # Color
     
@@ -426,7 +426,7 @@ ggcorrplot3 <-
         p <-
           p +
           geom_text(
-            data = cor_res[cor_res$Blank == 0, ],
+            data = cor_res[cor_res$Signif == 0, ],
             mapping = aes(
               x = Cid,
               y = Rid),
@@ -438,7 +438,7 @@ ggcorrplot3 <-
         p <-
           p +
           geom_point(
-            data = cor_res[cor_res$Blank == 0, ],
+            data = cor_res[cor_res$Signif == 0, ],
             mapping = aes(
               x = Cid,
               y = Rid),
@@ -490,7 +490,22 @@ ggcorrplot3 <-
     }
     
     # colorbar
-    
+    if (fig.method == "number") {
+    p <- 
+      p +
+      scale_colour_gradientn(
+        colours = col2(200),
+        limits = colorbar.limit,
+        guide = guide_colorbar(
+          title = "",
+          nbin = 1000,
+          ticks.colour = "black",
+          frame.colour = "black",
+          barwidth = colorbar.width,
+          barheight = colorbar.height)
+      ) +
+      theme(legend.position = colorbar.position) 
+    } else {
     p <- 
       p +
       scale_fill_gradientn(
@@ -505,6 +520,7 @@ ggcorrplot3 <-
           barheight = colorbar.height)
       ) +
       theme(legend.position = colorbar.position)
+    }
     
     # x axis labels
     
