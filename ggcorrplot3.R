@@ -47,15 +47,22 @@ ggcorrplot3 <-
     
     if (!require("tidyverse"))  install.packages("tidyverse")  
     if (!require("dplyr"))      install.packages("dplyr")
-    if (!require("ggplot2"))     install.packages("ggplot2")
+    if (!require("ggplot2"))    install.packages("ggplot2")
     if (!require("tidyr"))      install.packages("tidyr")
     if (!require("ggforce"))    install.packages("ggforce")
+    
+    # load tidyverse R package
+    
+    library(tidyverse)
     
     # check correlation r package
     
     if (!require("correlation")) install.packages("correlation", repos = "https://easystats.r-universe.dev")
       
-
+    # load easystats correlation R package
+    
+    library(correlation)
+    
     # check input dataset
     
     if (is.null(data.y) && is.null(select.x) && is.null(select.y)) {
