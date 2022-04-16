@@ -71,8 +71,8 @@ ggcorrplot3 <-
     
     # match arguments  
     
-    stat.method <- match.arg(tolower(stat.method))
-    figt.method <- match.arg(tolower(fig.method))
+    stat.method <- match.arg(stat.method)
+    figt.method <- match.arg(fig.method)
   
   # variable names and lengths
     
