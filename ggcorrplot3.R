@@ -469,7 +469,7 @@ ggcorrplot3 <-
               data = cor_res[cor_res$Signif == 0, ],
               mapping = aes(
                 x = Cid + coef.x.pos,
-                y = Rid + coef.y.pos,
+                y = Rid - coef.y.pos,
                 label = Coef_label),
               color = coef.color,
               size = coef.size,
